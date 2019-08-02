@@ -21,13 +21,7 @@
             <div class="form-group">
               <div class="input-group">
 
-                <input
-                 ngModel
-                 name="name" 
-                 required 
-                 type="text" 
-                 class="form-control" 
-                 placeholder="Nome">
+                <input ngModel name="name" required type="text" class="form-control" placeholder="Nome">
 
                 <div class="input-group-append">
                   <span class="input-group-text">
@@ -40,13 +34,7 @@
             <div class="form-group">
               <div class="input-group">
 
-                <input
-                  ngModel 
-                  name="password"
-                  required 
-                  type="password" 
-                  class="form-control" 
-                  placeholder="Password">
+                <input ngModel name="password" required type="password" class="form-control" placeholder="Password">
 
                 <div class="input-group-append">
                   <span class="input-group-text">
@@ -57,7 +45,18 @@
             </div>
 
             <div class="form-group">
-              <button [disabled]="f.invalid" class="btn btn-primary submit-btn btn-block">Criar uma conta</button>
+              <ng-template #normalButton>
+                  <button 
+                  [disabled]="f.invalid" 
+                  class="btn btn-primary submit-btn btn-block"
+                  >Criar uma conta</button>
+              </ng-template>
+              <button 
+                [disabled]="true"
+                class="btn btn-primary submit-btn btn-block"
+                *ngIf="loading; else normalButton"
+                >Criando usuário...</button>
+
             </div>
             <div class="text-block text-center my-3">
               <span class="text-small font-weight-semibold">Já tem uma conta?</span>
